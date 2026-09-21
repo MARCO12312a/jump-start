@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://cio4oiuvyw2j4"]
+
+[ext_resource type="Script" uid="uid://ba485vhxbul51" path="res://personaje.gd" id="1_48aib"]
+[ext_resource type="Texture2D" uid="uid://dtongcbjwkvc7" path="res://Personaje-Sheet.png" id="1_s7vd6"]
+[ext_resource type="Texture2D" uid="uid://dl7vj0of15tgd" path="res://Personaje-Sheet2.PNG" id="2_47rpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tybj"]
+atlas = ExtResource("2_47rpa")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbgxt"]
+atlas = ExtResource("2_47rpa")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r6ku"]
+atlas = ExtResource("2_47rpa")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aes0"]
+atlas = ExtResource("2_47rpa")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48aib"]
+atlas = ExtResource("1_s7vd6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47rpa"]
+atlas = ExtResource("1_s7vd6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w730s"]
+atlas = ExtResource("1_s7vd6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbjos"]
+atlas = ExtResource("1_s7vd6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc88a"]
+atlas = ExtResource("1_s7vd6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or8g2"]
+atlas = ExtResource("1_s7vd6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1soa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tybj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbgxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r6ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aes0")
+}],
+"loop": 1,
+"name": &"CROUCH",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48aib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47rpa")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w730s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbjos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc88a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or8g2")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 7.5
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tybj"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbgxt"]
+size = Vector2(20, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1soa"]
+radius = 3.0
+height = 6.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=963810405]
+scale = Vector2(2, 2)
+script = ExtResource("1_48aib")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=411534936]
+sprite_frames = SubResource("SpriteFrames_a1soa")
+animation = &"CROUCH"
+frame_progress = 0.6487234
+
+[node name="StandCollision" type="CollisionShape2D" parent="." unique_id=1614656497]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_4tybj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1231278130]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1593853413]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_pbgxt")
+
+[node name="DuckCollision" type="CollisionShape2D" parent="." unique_id=793087728]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_a1soa")
